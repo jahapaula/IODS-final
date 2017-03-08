@@ -1,5 +1,5 @@
 ---
-title: "IODS Final project"
+title: "IODS Final project: Attitudes of Finnish eaters"
 author: "Salla-Maaria Laaksonen salla.laaksonen at helsinki.fi"
 date: "8 Mar 2017"
 output:
@@ -17,22 +17,15 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# IODS final project: Attitudes of Finnish eaters
 
-Salla-Maaria Laaksonen / salla.laaksonen at helsinki.fi
+_Abstract_ 
 
-## Abstract 
-
-The aim of this paper is to identify different behavioural attitudes related to food among Finnish people. The analysis is based on a representative dataset of the Finnish population, collected in 2016. A subset of the questionnaire data consisting of 23 statement variables is explored using principal component analysis. The results show that...
+The aim of this paper is to identify different behavioural attitudes related to food among Finnish people. The analysis is based on a representative dataset of the Finnish population, collected in 2016. A subset of the questionnaire data consisting of 23 statement variables is explored using principal component analysis. The results show that Finns attitudes towards food and eating can be reasonably depicted using to composite measurements: foodie scale and healthiness scale.
 
 
 ```{r libraries}
 library(foreign)
-library(dplyr)
-library(ggplot2)
-library(GGally)
-#library(stringr)
-#library(tidyr)
+library(likert)
 ```
 
 # Introduction
@@ -42,7 +35,7 @@ Food plays an important part in our daily routines. Yet food is nothing but ordi
 The aim of this study is to investigate the food consumption attitudes among Finnish people. Methodologically this study resides in the area of quantitative attitude research, where attitudes of the respondents are studied using various statements regarding the studied topic.
 
 
-## Data and Method
+# Data and Method
 
 ```{r}
 # load the full dataset for the demographic statistics
@@ -89,20 +82,27 @@ The list of final selected statements is in Table 1 below.
 | k1.21 | I am not interested in cooking |
 | k1.22 | In my opinion, convenience meals contain too many additives (E-codes) |
 | k1.23 | Usually I buy as little as possible of processed food |
-[Table 1. Variables of the data][table1]
+_Table 1. Variables of the data_
 
-```{r}
+Since this is a large set of statement variables, it is not feasible to start plotting them separately. However, a [likert R package](https://github.com/jbryer/jbryer.github.com/tree/master/likert) made by Jason Bryer makes beautiful graphs that give an overview of the data. Figure 1 below indicates that most of the people who answered this survey seem to agree with statements that express enjoyment towards food and cooking.
+
+```{r fig.width=12}
+# reorder all factor levels
+for(i in c(1:ncol(ss16likerts))) {
+  ss16likerts[,i] = factor(ss16likerts[,i],levels(ss16likerts[,i])[c(4,2,1,3,5)]) 
+}
+
 library(likert)
 ss16bar <- likert(ss16likerts)
 plot(ss16bar)
 ```
 
-Since this is a large set of statement variables, it is not feasible to start plotting them separately. Instead, the aim is to reduce the dimensions in this dataset using principal componen analysis (PCA). PCA is a method that investigates the relationships between the variables in the data to produce smaller matrices of them hence unraveling possibly underlying principal components in the data: dimensions that explain the variance of the variables. Through this analysis is it possible to represent the data with lesser dimensions. 
+Next, the aim is to reduce the dimensions in this dataset using principal componen analysis (PCA). PCA is a method that investigates the relationships between the variables in the data to produce smaller matrices of them hence unraveling possibly underlying principal components in the data: dimensions that explain the variance of the variables. Through this analysis is it possible to represent the data with lesser dimensions. 
 
 
-## PCA of the statements
+# PCA of the statements
 
-The results of the principal componen analysis are represented in Figure 1 below as well as in the summary statistics. PC1 explains 28.11% of the variance in the data, PC2 11.47%, and PC3 8.24%.
+The results of the principal componen analysis are represented in Figure 2 below as well as in the summary statistics. PC1 explains 28.11% of the variance in the data, PC2 11.47%, and PC3 8.24%.
 
 
 ```{r fig.width=8, fig.height=8}
@@ -112,7 +112,7 @@ summary(pca_1)
 pca_1
 
 # a biplot of the principal components 1&2 and the original variables
-biplot(pca_1, choices = 1:2, cex = c(0.8, 1), col = c("grey60", "blue"), main = " ", sub = "Figure 1. PCA of the food statements")
+biplot(pca_1, choices = 1:2, cex = c(0.8, 1), col = c("grey60", "blue"), main = " ", sub = "Figure 2. PCA of the food statements")
 ```
 
 PC1 is loaded with variables that clearly relate to enjoyment related to food on the right side of the graph and variables that describe uninterest towards food and mostly see it as a necessity (see Table 2). This could be named as the foodie dimension: people who score high on this dimension like to cook, try out new things with food, and follow trends and events related to food. Low score people instead consider food only as fuel for their daily activities, and instead of cooking themselves they use convenience food.
@@ -151,7 +151,7 @@ _Table 2. Variables describing foodie and antifoodie attitudes._
 
 PC2, then again, is most loaded with variables k1.18, k1.20 and k1.23 and has a negative loading on variable k1.13. 18,20 and 23 are all related to the importance of healthy choices in food. Statement 13 says "Healthiness of food does not matter to me, because the most important thing is good taste". Hence, PC2 is a dimension that depicts the interest in a healthy diet.
 
-## Conclusions and discussion
+# Conclusions and discussion
 
 Based on the analysi above we can conclude that a survey of food-related attitudes reveals that two dimension are important describing the attitude of Finns towards food. First dimension was named foodie dimension and it meaures the general interest towards food. Second dimension is a healthiness dimension, which measured the interest towards having a healthy diet.
 
