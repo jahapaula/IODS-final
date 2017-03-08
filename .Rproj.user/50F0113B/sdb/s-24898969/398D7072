@@ -1,14 +1,14 @@
 {
     "collab_server" : "",
-    "contents" : "# https://git-scm.com/docs/gitignore\n\n# Data files \n/*.sav\n/*.csv\n\n# R project file\n/*.Rproj\n",
+    "contents" : "# https://git-scm.com/docs/gitignore\n\n# Data files \n/*.sav\n/*.csv\n\n# R project file\n/*.Rproj\n/*.user\n",
     "created" : 1489011785053.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3812588433",
+    "hash" : "2138705570",
     "id" : "398D7072",
-    "lastKnownWriteTime" : 1489011796,
-    "last_content_update" : 1489011796737,
+    "lastKnownWriteTime" : 1489011901,
+    "last_content_update" : 1489011901364,
     "path" : "~/IODS-project/fineats/.gitignore",
     "project_path" : ".gitignore",
     "properties" : {
