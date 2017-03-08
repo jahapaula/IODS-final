@@ -1,0 +1,6 @@
+"0","# load the full dataset for the demographic statistics"
+"0","ss16full <- read.table(""ss2016sub-ao.csv"", sep="","", header = TRUE, row.names = 1 )"
+"0","# load the likert dataset for making the likert graphs"
+"0","ss16likerts <- read.table(""ss2016likerts.csv"", sep="","", header = TRUE, row.names = 1 )"
+"0","# load the subset of data with the statement variables only"
+"0","ss16 <- read.table(""ss2016final.csv"", sep="","", header = TRUE, row.names = 1 )"
