@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 _Abstract_ 
 
-The aim of this paper is to identify different behavioural attitudes related to food among Finnish people. The analysis is based on a representative dataset of the Finnish population, collected in 2016. A subset of the questionnaire data consisting of 23 statement variables is explored using principal component analysis. The results show that Finns attitudes towards food and eating can be reasonably depicted using to composite measurements: foodie scale and healthiness scale.
+The aim of this paper is to identify different behavioural attitudes related to food among Finnish people. The analysis is based on a representative dataset of the Finnish population, collected in 2016. A subset of the questionnaire data consisting of 23 statement variables is explored using principal component analysis. The results show that Finns attitudes towards food and eating can be reasonably depicted using two composite measurements: foodie scale and healthiness scale.
 
 
 ```{r libraries}
